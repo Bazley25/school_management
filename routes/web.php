@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ProfileController;
 
-use App\Models\User;
+// use App\Models\User;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +53,16 @@ Route::prefix('users')->group(function(){
     Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('user/delete');
 
 });
+
+
+// profile
+Route::prefix('profile')->group(function(){
+
+Route::get('/view/', [ProfileController::class, 'ProfileView'])->name('view/profile');
+Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile/edit');
+Route::post('/update', [ProfileController::class, 'ProfileUpdate'])->name('profile/update');
+
+Route::get('/user/pass/change', [ProfileController::class, 'PasswordView'])->name('pass/change');
+Route::post('/user/pass/update', [ProfileController::class, 'PasswordUpdate'])->name('password/update');
+
+}); 

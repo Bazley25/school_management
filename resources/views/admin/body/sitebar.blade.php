@@ -34,7 +34,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('user/view') }}"><i class="ti-more"></i>View User</a></li>
-            <li><a href="calendar.html"><i class="ti-more"></i>Add User</a></li>
+            <li><a href="{{ route('view/profile') }}"><i class="ti-more"></i>Manage Profile</a></li>
+            <li><a href="{{ route('pass/change') }}"><i class="ti-more"></i>Change Password</a></li>
           </ul>
         </li> 
 		  
