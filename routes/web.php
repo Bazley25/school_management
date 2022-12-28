@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\UserController;
+
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::middleware([
@@ -23,6 +28,20 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('admin/master/index');
     })->name('dashboard');
+});
+
+
+// Admin Controller
+Route::get('admin/logout', [AdminController::class, 'Logout'])->name('admin/logout');
+
+// User Management  
+
+
+
+Route::prefix('users')->group(function(){
+
+    Route::get('/view', [UserController::class, 'UserView'])->name('user/view');
+
 });
