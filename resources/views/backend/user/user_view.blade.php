@@ -1,5 +1,6 @@
 @extends('admin/master/admin_master')
 @section('admin_main_content')
+
 <div class="content-wrapper">
     <div class="container-full">
       <section class="content">
@@ -10,7 +11,7 @@
            <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">User List</h3>
-                <a href="" style="float: right;" class="btn btn-rounded btn-success mb-5">Add User</a>
+                <a href="{{ route('user/add') }}" style="float: right;" class="btn btn-rounded btn-success mb-5">Add User</a>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -29,12 +30,12 @@
                           @foreach ($allUser as $key => $user)
                           <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $user->role }}</td>
+                            <td>{{ $user->usertype }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <a href="" class="btn btn-info">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('user/edit',$user->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('user/delete',$user->id) }}" class="btn btn-danger" id="userdelete">Delete</a>
                             </td>
                         </tr>
                           @endforeach
