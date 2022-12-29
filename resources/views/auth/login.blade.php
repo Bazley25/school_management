@@ -62,8 +62,8 @@
 								  <div class="row">
 									<div class="col-6">
 									  <div class="checkbox text-white">
-										<input type="checkbox" id="remember_me" >
-										<label for="remember_me" name="remember">Remember Me</label>
+										<input type="checkbox" id="remember_me" name="remember">
+										<label for="remember_me" >Remember Me</label>
 									  </div>
 									</div>
 									<!-- /.col -->

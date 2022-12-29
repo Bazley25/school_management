@@ -78,7 +78,7 @@
         window.location.href = link
         Swal.fire(
           'Deleted!',
-          'User has been deleted.',
+          'Data has been deleted.',
           'success'
         )
       }

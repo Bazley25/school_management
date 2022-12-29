@@ -85,16 +85,7 @@ class ProfileController extends Controller
     		return redirect()->back();
     	}
 
-        // $hashedPassword = Auth::user()->password;
-        // if (Hash::check($request->current_password,$hashedPassword)) {
-        //     $user = User::find(Auth::id());
-        //     $user->password = Hash::make($request->password);
-        //     $user->save();
-        //     Auth::logout();
-        //     return redirect()->route('login');
-        // }else{
-        //     return redirect()->back();
-        // }
+        
     }
 
 }
