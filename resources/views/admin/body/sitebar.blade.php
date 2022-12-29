@@ -1,3 +1,10 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+@endphp
+
+
+
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">	
@@ -17,14 +24,14 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">  
 		  
-		<li>
-          <a href="index.html">
+		<li class="{{ ($route == 'dashboard')?'active':''}}">
+          <a href="{{ route('dashboard') }}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
         </li>  
 		
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/users')?'active':''}}" >
           <a href="#">
             <i data-feather="user"></i>
             <span>Manage User</span>
@@ -34,6 +41,20 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('user/view') }}"><i class="ti-more"></i>View User</a></li>
+            {{-- <li><a href="{{ route('view/profile') }}"><i class="ti-more"></i>Manage Profile</a></li>
+            <li><a href="{{ route('pass/change') }}"><i class="ti-more"></i>Change Password</a></li> --}}
+          </ul>
+        </li> 
+        <li class="treeview {{ ($prefix == '/profile')?'active':''}}" >
+          <a href="#">
+            <i data-feather="profile"></i>
+            <span>Manage Profile</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            {{-- <li><a href="{{ route('user/view') }}"><i class="ti-more"></i>View User</a></li> --}}
             <li><a href="{{ route('view/profile') }}"><i class="ti-more"></i>Manage Profile</a></li>
             <li><a href="{{ route('pass/change') }}"><i class="ti-more"></i>Change Password</a></li>
           </ul>
