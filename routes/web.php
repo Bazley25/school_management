@@ -10,12 +10,14 @@ use App\Http\Controllers\Backend\student_setup\StudentYearController;
 use App\Http\Controllers\Backend\student_setup\StudentGroupController;
 use App\Http\Controllers\Backend\student_setup\StudentShiftController;
 use App\Http\Controllers\Backend\student_setup\FeeCategoryController;
+use App\Http\Controllers\Backend\student_setup\FeeAmountController;
 
 use App\Models\StudentClass;
 use App\Models\StudentYear;
 use App\Models\StudentGroup;
 use App\Models\StudentShift;
 use App\Models\FeeCategory;
+use App\Models\FeeCategoryAmount;
 
 
 
@@ -123,5 +125,13 @@ Route::prefix('setups')->group(function(){
     Route::get('/fee/category/edit/{id}', [FeeCategoryController::class, 'FeeCategoryEdit'])->name('fee/category/edit');
     Route::post('/fee/category/update/{id}', [FeeCategoryController::class, 'FeeCategoryUpdate'])->name('fee/category/update');
     Route::get('/fee/category/delete/{id}', [FeeCategoryController::class, 'FeeCategoryDelete'])->name('fee/category/delete');
+
+
+    
+    // Fee Category Routes
+    Route::get('/fee/amount/view', [FeeAmountController::class, 'FeeAmountView'])->name('fee/amount/view');
+    Route::get('/fee/amount/add', [FeeAmountController::class, 'FeeAmountAdd'])->name('fee/amount/add');
+
+
 
     }); 
