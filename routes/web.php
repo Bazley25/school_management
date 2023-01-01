@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\student_setup\StudentShiftController;
 use App\Http\Controllers\Backend\student_setup\FeeCategoryController;
 use App\Http\Controllers\Backend\student_setup\FeeAmountController;
 use App\Http\Controllers\Backend\student_setup\ExamTypeController;
+use App\Http\Controllers\Backend\student_setup\SubjectController;
 
 use App\Models\StudentClass;
 use App\Models\StudentYear;
@@ -20,6 +21,7 @@ use App\Models\StudentShift;
 use App\Models\FeeCategory;
 use App\Models\FeeCategoryAmount;
 use App\Models\ExamType;
+use App\Models\Subject;
 
 
 
@@ -149,11 +151,11 @@ Route::prefix('setups')->group(function(){
 
 
     // Subject Routes
-    Route::get('/subject/view', [ExamTypeController::class, 'ExamTypeView'])->name('subjectview');
-    Route::get('/subject/add', [ExamTypeController::class, 'ExamTypeAdd'])->name('subject/add');
-    Route::post('/subject/store', [ExamTypeController::class, 'ExamTypeStore'])->name('subjectstore');
-    Route::get('/subjectedit/{id}', [ExamTypeController::class, 'ExamTypeEdit'])->name('subject/edit');
-    Route::post('/subject/update/{id}', [ExamTypeController::class, 'ExamTypeUpdate'])->name('subjectupdate');
-    Route::get('/subject/delete/{id}', [ExamTypeController::class, 'ExamTypeDelete'])->name('subject/delete');
+    Route::get('/subject/view', [SubjectController::class, 'SubjectView'])->name('subject/view');
+    Route::get('/subject/add', [SubjectController::class, 'SubjectAdd'])->name('subject/add');
+    Route::post('/subject/store', [SubjectController::class, 'SubjectStore'])->name('subject/store');
+    Route::get('/subject/edit/{id}', [SubjectController::class, 'SubjectEdit'])->name('subject/edit');
+    Route::post('/subject/update/{id}', [SubjectController::class, 'SubjectUpdate'])->name('subject/update');
+    Route::get('/subject/delete/{id}', [SubjectController::class, 'SubjectDelete'])->name('subject/delete');
 
     }); 
