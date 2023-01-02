@@ -120,7 +120,7 @@ class AssignSubjectController extends Controller
         // FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();
         $deletedata = AssignSubject::where('class_id',$class_id)->delete();
         $notification = array(
-            'message' =>'Fee Amount has been Deleted Succesfully.',
+            'message' =>'Assign Subject has been Deleted Succesfully.',
             'alert-type'=>'success',
         );
 
