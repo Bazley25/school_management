@@ -37,8 +37,6 @@ class FeeAmountController extends Controller
                 $fee_amount->amount = $request->amount[$i];
                 $fee_amount->save();
 
-                
-
             } // end for condition
         }// endif condition
         $notification = array(
@@ -46,7 +44,6 @@ class FeeAmountController extends Controller
             'alert-type'=>'success',
         );
         
-
         return redirect()->route('fee/amount/view')->with($notification);
         
     }
@@ -90,7 +87,6 @@ class FeeAmountController extends Controller
             'message' =>'Fee Amount has been Updated Succesfully.',
             'alert-type'=>'success',
         );
-        
 
         return redirect()->route('fee/amount/view')->with($notification);
 
@@ -113,10 +109,6 @@ class FeeAmountController extends Controller
             $data['detailsamount'] = FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
         
             return view('backend/setup/fee_amount/fee_amount_details',$data);
-        
-        
-        
-        
         }
 
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\student_setup\FeeCategoryController;
 use App\Http\Controllers\Backend\student_setup\FeeAmountController;
 use App\Http\Controllers\Backend\student_setup\ExamTypeController;
 use App\Http\Controllers\Backend\student_setup\SubjectController;
+use App\Http\Controllers\Backend\student_setup\AssignSubjectController;
 
 use App\Models\StudentClass;
 use App\Models\StudentYear;
@@ -22,6 +23,7 @@ use App\Models\FeeCategory;
 use App\Models\FeeCategoryAmount;
 use App\Models\ExamType;
 use App\Models\Subject;
+use App\Models\AssignSubject;
 
 
 
@@ -132,7 +134,7 @@ Route::prefix('setups')->group(function(){
 
 
     
-    // Fee Category Routes
+    // Fee Amount  Routes
     Route::get('/fee/amount/view', [FeeAmountController::class, 'FeeAmountView'])->name('fee/amount/view');
     Route::get('/fee/amount/add', [FeeAmountController::class, 'FeeAmountAdd'])->name('fee/amount/add');
     Route::post('/fee/amount/store', [FeeAmountController::class, 'FeeAmountStore'])->name('fee/amount/store');
@@ -157,5 +159,15 @@ Route::prefix('setups')->group(function(){
     Route::get('/subject/edit/{id}', [SubjectController::class, 'SubjectEdit'])->name('subject/edit');
     Route::post('/subject/update/{id}', [SubjectController::class, 'SubjectUpdate'])->name('subject/update');
     Route::get('/subject/delete/{id}', [SubjectController::class, 'SubjectDelete'])->name('subject/delete');
+    
+    
+    // Assign Subject Routes
+    Route::get('assign/subject/view', [AssignSubjectController::class, 'AssignSubjectView'])->name('assign/subject/view');
+    Route::get('assign/subject/add', [AssignSubjectController::class, 'AssignSubjectAdd'])->name('assign/subject/add');
+    Route::post('assign/subject/store', [AssignSubjectController::class, 'AssignSubjectStore'])->name('assign/subject/store');
+    Route::get('assign/subject/edit/{class_id}', [AssignSubjectController::class, 'AssignSubjectEdit'])->name('assign/subject/edit');
+    Route::post('assign/subject/update/{class_id}', [AssignSubjectController::class, 'AssignSubjectUpdate'])->name('assign/subject/update');
+    Route::get('assign/subject/details/{class_id}', [AssignSubjectController::class, 'AssignSubjectDetails'])->name('assign/subject/details');
+    Route::get('assign/subject/delete/{class_id}', [AssignSubjectController::class, 'AssignSubjectDelete'])->name('assign/subject/delete');
 
     }); 
