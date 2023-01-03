@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\student_setup\ExamTypeController;
 use App\Http\Controllers\Backend\student_setup\SubjectController;
 use App\Http\Controllers\Backend\student_setup\AssignSubjectController;
 use App\Http\Controllers\Backend\student_setup\DesignationController;
+use App\Http\Controllers\Backend\student\StudentController;
 
 use App\Models\StudentClass;
 use App\Models\StudentYear;
@@ -26,6 +27,7 @@ use App\Models\ExamType;
 use App\Models\Subject;
 use App\Models\AssignSubject;
 use App\Models\Designation;
+use App\Models\AssignStudent;
 
 
 
@@ -184,14 +186,16 @@ Route::prefix('setups')->group(function(){
     }); 
 
 
-    // Student Management All Routes
+    // Student Registration All Routes
 Route::prefix('students')->group(function(){
 
-    Route::get('/regi/view', [ProfileController::class, 'ProfileView'])->name('student/registration/view');
-    Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile/edit');
-    Route::post('/update', [ProfileController::class, 'ProfileUpdate'])->name('profile/update');
+    Route::get('/regi/view', [StudentController::class, 'StudentRegiView'])->name('student/registration/view');
+    Route::get('/regi/add', [StudentController::class, 'StudentRegiAdd'])->name('regi/add');
+    Route::post('/regi/store', [StudentController::class, 'StudentRegiStore'])->name('regi/store');
+    Route::get('/regi/edit', [StudentController::class, 'ProfileEdit'])->name('profile/edit');
+    Route::post('/update', [StudentController::class, 'ProfileUpdate'])->name('profile/update');
     
-    Route::get('/user/pass/change', [ProfileController::class, 'PasswordView'])->name('pass/change');
-    Route::post('/user/pass/update', [ProfileController::class, 'PasswordUpdate'])->name('password/update');
+    Route::get('/user/pass/change', [StudentController::class, 'PasswordView'])->name('pass/change');
+    Route::post('/user/pass/update', [StudentController::class, 'PasswordUpdate'])->name('password/update');
     
     }); 

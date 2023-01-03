@@ -31,7 +31,7 @@
                                             <option value="{{ $fee_category->id }}">{{ $fee_category->name }}</option>
                                             @endforeach
                                         </select>
-                                    <div class="help-block"></div></div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -47,7 +47,7 @@
                                               <option value="{{ $class->id }}">{{ $class->name }}</option>
                                               @endforeach
                                           </select>
-                                      <div class="help-block"></div></div>
+                                      </div>
                                   </div>
                                   </div>
                                   <div class="col-md-5">
