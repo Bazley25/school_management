@@ -20,7 +20,11 @@ class StudentController extends Controller
 {
     public function StudentRegiView()
     {
-        $data['AllData'] = AssignStudent::all();
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['year_id'] = StudentYear::orderBy('id','desc')->first()->id;
+        $data['class_id'] = StudentClass::orderBy('id','desc')->first()->id;
+        $data['AllData'] = AssignStudent::where('year_id',$data['year_id'])->where('class_id',$data['class_id'])->get();
         return view('backend/student/student_regi/student_regi_view',$data);
     }
 
@@ -83,9 +87,40 @@ class StudentController extends Controller
             $user->gender = $request->gender;
             $user->religion = $request->religion;
             $user->dob = date('Y-m-d',strtotime($request->dob));
-           
+
+            if($request->file('image')){
+                $file = $request->file('image');
+                $filename = date('YmdHi').$file->getClientOriginalName();
+                $file->move(public_path('upload/student_images'),$filename);
+                $user['image'] = $filename;
+            }
+            $user->save();
+
+            
+            $assignstudent = new AssignStudent();
+            $assignstudent->student_id = $user->id;
+            $assignstudent->class_id = $request->class_id;
+            $assignstudent->year_id = $request->year_id;
+            $assignstudent->group_id = $request->group_id;
+            $assignstudent->shift_id = $request->shift_id;
+            $assignstudent->save();
+
+            
+            $discount_student = new DiscountStudent();
+            $discount_student->assign_student_id = $assignstudent->id;
+            $discount_student->fee_category_id = '1';
+            $discount_student->discount = $request->discount;
+            $discount_student->save();
             
         });
+
+        $notification = array(
+            'message' =>' Student Registration has been Completed Succesfully.',
+            'alert-type'=>'success',
+        );
+        
+
+        return redirect()->route('student/registration/view')->with($notification);
 
     }  // end method
     
