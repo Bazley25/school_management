@@ -14,7 +14,7 @@
     
               <div class="box-body">
               
-                <form action="">
+                <form action="{{ route('student/year/class/data') }}" method="get">
                   {{--  Row Start --}}
                   <div class="row">
                       <div class="col-md-4">
@@ -63,6 +63,11 @@
               <!-- /.box-header -->
               <div class="box-body">
                   <div class="table-responsive">
+
+                    @if (!@$search)
+                        
+                   
+                        
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
@@ -92,13 +97,55 @@
                               <img  src="{{ (!empty($data['student_info']['image']))? url('upload/student_images/'.$data['student_info']['image']):url('upload/no_image.jpg') }}" style="width: 60px; height:60px; ttext-align:center" alt="profile Image"></td>
                             <td>{{ $data['student_info']['code'] }}</td>
                             <td>
-                                <a href="" class="btn btn-info">Edit</a>
+                                <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
+                                <a href="{" class="btn btn-danger" id="userdelete">Delete</a>
+                            </td>
+                        </tr> student_id
+                          @endforeach
+                        </tbody>
+                    </table>
+  
+                    @else
+                        
+                    <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                              <th width="5%">SL</th>
+                              <th>Name</th>
+                              <th>ID No</th>
+                              <th>Roll</th>
+                              <th>Year</th>
+                              <th>Class</th>
+                              <th>Image</th>
+                              @if(Auth::user()->role == "Admin")
+                              <th>Code</th> 
+                              @endif
+                              <th width="20%">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach ($AllData as $key => $data)
+                          <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $data['student_info']['name'] }}</td>
+                            <td>{{ $data['student_info']['id_no'] }}</td>
+                            <td> </td>
+                            <td>{{ $data['student_year_info']['name'] }}</td>
+                            <td>{{ $data['student_class_info']['name'] }}</td>
+                            <td>
+                              <img  src="{{ (!empty($data['student_info']['image']))? url('upload/student_images/'.$data['student_info']['image']):url('upload/no_image.jpg') }}" style="width: 60px; height:60px; ttext-align:center" alt="profile Image"></td>
+                            <td>{{ $data['student_info']['code'] }}</td>
+                            <td>
+                                <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
                                 <a href="" class="btn btn-danger" id="userdelete">Delete</a>
                             </td>
                         </tr>
                           @endforeach
                         </tbody>
                     </table>
+                    
+                    @endif
+
                   </div>
               </div>
             </div> 

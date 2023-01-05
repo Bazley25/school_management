@@ -13,6 +13,10 @@ class AssignStudent extends Model
     {
         return $this->belongsTo(User::class, 'student_id','id');
     }
+    public function student_discount()
+    {
+        return $this->belongsTo(DiscountStudent::class, 'id','assign_student_id');
+    }
 
     public function student_class_info()
     {

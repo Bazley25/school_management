@@ -192,10 +192,13 @@ Route::prefix('students')->group(function(){
     Route::get('/regi/view', [StudentController::class, 'StudentRegiView'])->name('student/registration/view');
     Route::get('/regi/add', [StudentController::class, 'StudentRegiAdd'])->name('regi/add');
     Route::post('/regi/store', [StudentController::class, 'StudentRegiStore'])->name('regi/store');
-    Route::get('/regi/edit', [StudentController::class, 'ProfileEdit'])->name('profile/edit');
-    Route::post('/update', [StudentController::class, 'ProfileUpdate'])->name('profile/update');
+    Route::get('/regi/edit/{student_id}', [StudentController::class, 'StudentRegiEdit'])->name('regi/edit');
+    Route::post('/regi/update/{student_id}', [StudentController::class, 'StudentRegiUpdate'])->name('regi/update');
     
     Route::get('/user/pass/change', [StudentController::class, 'PasswordView'])->name('pass/change');
     Route::post('/user/pass/update', [StudentController::class, 'PasswordUpdate'])->name('password/update');
+
+    // search route
+    Route::get('/student/year/class/data', [StudentController::class, 'StudentYearClassSearch'])->name('student/year/class/data');
     
     }); 
