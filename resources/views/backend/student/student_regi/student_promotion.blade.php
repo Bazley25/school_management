@@ -9,13 +9,13 @@
             <!-- Basic Forms -->
              <div class="box">
                <div class="box-header with-border">
-                 <h4 class="box-title">Edit Student Info</h4>
+                 <h4 class="box-title"> Student Promotion</h4>
                </div>
                <!-- /.box-header -->
                <div class="box-body">
                  <div class="row">
                    <div class="col">
-                       <form action="{{ route('regi/update',$dataEdit->student_id) }}" method="POST" enctype="multipart/form-data">
+                       <form action="{{ route('student/promotion/confirm',$dataEdit->student_id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="id" value="{{ $dataEdit->id }}">
@@ -202,7 +202,7 @@
                                   <div class="form-group">
                                     <h5>Image <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                    <input type="file" name="image" class="form-control-file" required="" id="image"> 
+                                    <input type="file" name="image" class="form-control-file"  id="image"> 
                                     </div>
                                 </div>
                                 </div>
@@ -214,20 +214,7 @@
                                   </div>
                               </div>
                             </div>
-                                {{-- <div class="col-md-4">
-                                  <div class="form-group">
-                                    <h5> Group <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <select name="religion" id="class_id" required="" class="form-control">
-                                            <option value="" selected="" disabled>Select Year</option>
-                                            @foreach ($groups as $group)
-                                            <option value="{{ $group->id }}">{{ $group->name }}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> --}}
+                                
                         </div>
                         {{-- 5th Row end --}}
                         </div>
@@ -235,7 +222,7 @@
                         {{-- main Row end --}}
                        
                            <div class="text-xs-right">
-                               <input type="submit" class="btn btn-rounded btn-info" value="Update">
+                               <input type="submit" class="btn btn-rounded btn-info" value="Promotion">
                            </div>
                        </form>
                    </div>

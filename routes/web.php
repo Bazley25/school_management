@@ -194,9 +194,11 @@ Route::prefix('students')->group(function(){
     Route::post('/regi/store', [StudentController::class, 'StudentRegiStore'])->name('regi/store');
     Route::get('/regi/edit/{student_id}', [StudentController::class, 'StudentRegiEdit'])->name('regi/edit');
     Route::post('/regi/update/{student_id}', [StudentController::class, 'StudentRegiUpdate'])->name('regi/update');
+    Route::get('/student/promotion/{student_id}', [StudentController::class, 'StudentPromotion'])->name('student/promotion');
+    Route::post('/student/promotion/confirm/{student_id}', [StudentController::class, 'StudentPromotionStore'])->name('student/promotion/confirm');
     
-    Route::get('/user/pass/change', [StudentController::class, 'PasswordView'])->name('pass/change');
-    Route::post('/user/pass/update', [StudentController::class, 'PasswordUpdate'])->name('password/update');
+    // Route::get('/user/pass/change', [StudentController::class, 'PasswordView'])->name('pass/change');
+    // Route::post('/user/pass/update', [StudentController::class, 'PasswordUpdate'])->name('password/update');
 
     // search route
     Route::get('/student/year/class/data', [StudentController::class, 'StudentYearClassSearch'])->name('student/year/class/data');

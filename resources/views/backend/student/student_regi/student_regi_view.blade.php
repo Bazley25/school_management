@@ -81,7 +81,7 @@
                               @if(Auth::user()->role == "Admin")
                               <th>Code</th> 
                               @endif
-                              <th width="20%">Action</th>
+                              <th width="27%">Action</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -98,7 +98,8 @@
                             <td>{{ $data['student_info']['code'] }}</td>
                             <td>
                                 <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
-                                <a href="{" class="btn btn-danger" id="userdelete">Delete</a>
+                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-info">Promotion</a>
+                                <a href="" class="btn btn-danger" >Delete</a>
                             </td>
                         </tr> student_id
                           @endforeach
@@ -120,7 +121,7 @@
                               @if(Auth::user()->role == "Admin")
                               <th>Code</th> 
                               @endif
-                              <th width="20%">Action</th>
+                              <th width="27%">Action</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -137,7 +138,8 @@
                             <td>{{ $data['student_info']['code'] }}</td>
                             <td>
                                 <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
-                                <a href="" class="btn btn-danger" id="userdelete">Delete</a>
+                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-info">Promotion</a>
+                                <a href="" class="btn btn-danger" >Delete</a>
                             </td>
                         </tr>
                           @endforeach
