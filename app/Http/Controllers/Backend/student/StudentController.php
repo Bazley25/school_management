@@ -15,6 +15,7 @@ use App\Models\StudentGroup;
 use App\Models\StudentShift;
 
 use DB;
+use PDF;
 
 class StudentController extends Controller
 {
@@ -270,5 +271,24 @@ class StudentController extends Controller
 
     }  // end method
 
+
+    public function StudentDetails($student_id)
+    {
+        $data['details'] = AssignStudent::with(['student_info','student_discount'])->where('student_id',$student_id)->first();
+
+        $pdf = PDF::loadView('backend/student/student_regi/student_regi_detail_pdf', $data);
+	$pdf->SetProtection(['copy', 'print'], '', 'pass');
+	return $pdf->stream('document.pdf');
+    
+
+    }
+
+    // function generate_pdf() {
+    //     $data = [
+    //         'foo' => 'bar'
+    //     ];
+    //     $pdf = PDF::loadView('pdf.document', $data);
+    //     return $pdf->stream('document.pdf');
+    // }
 
 }

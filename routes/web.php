@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// All Controller
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -16,7 +17,10 @@ use App\Http\Controllers\Backend\student_setup\SubjectController;
 use App\Http\Controllers\Backend\student_setup\AssignSubjectController;
 use App\Http\Controllers\Backend\student_setup\DesignationController;
 use App\Http\Controllers\Backend\student\StudentController;
+use App\Http\Controllers\Backend\student\StudentRollController;
+use App\Http\Controllers\Backend\student\StudentRegistrationFeeController;
 
+// All Models
 use App\Models\StudentClass;
 use App\Models\StudentYear;
 use App\Models\StudentGroup;
@@ -196,11 +200,25 @@ Route::prefix('students')->group(function(){
     Route::post('/regi/update/{student_id}', [StudentController::class, 'StudentRegiUpdate'])->name('regi/update');
     Route::get('/student/promotion/{student_id}', [StudentController::class, 'StudentPromotion'])->name('student/promotion');
     Route::post('/student/promotion/confirm/{student_id}', [StudentController::class, 'StudentPromotionStore'])->name('student/promotion/confirm');
+    Route::get('/student/details/{student_id}', [StudentController::class, 'StudentDetails'])->name('student/details');
     
-    // Route::get('/user/pass/change', [StudentController::class, 'PasswordView'])->name('pass/change');
-    // Route::post('/user/pass/update', [StudentController::class, 'PasswordUpdate'])->name('password/update');
-
     // search route
     Route::get('/student/year/class/data', [StudentController::class, 'StudentYearClassSearch'])->name('student/year/class/data');
+
+
+
+    // Student Role Generate Routes
+    Route::get('/student/roll/view', [StudentRollController::class, 'StudentRollView'])->name('student/roll/view');
+    Route::get('/registration/student/gets', [StudentRollController::class, 'RegiStudentGets'])->name('registration/student/gets');
+    Route::post('/roll/generate/store', [StudentRollController::class, 'StudentRollStore'])->name('roll/generate/store');
+
+    // Student Registration Fee Routes
+    Route::get('/regi/fee/view', [StudentRegistrationFeeController::class, 'StudentRegiFeeView'])->name('student/regi/fee/view');
+    Route::get('/student/registration/fee/classwise/gets', [StudentRegistrationFeeController::class, 'StudentRegiFeeClassWise'])->name('student/registration/fee/classwise/gets');
+    Route::get('/student/registration/fee/payslip', [StudentRegistrationFeeController::class, 'StudentRegiFeePayslip'])->name('student/registration/fee/payslip');
+    
+    
+
+    
     
     }); 

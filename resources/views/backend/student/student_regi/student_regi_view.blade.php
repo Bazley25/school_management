@@ -90,7 +90,7 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $data['student_info']['name'] }}</td>
                             <td>{{ $data['student_info']['id_no'] }}</td>
-                            <td> </td>
+                            <td>{{ $data->roll }} </td>
                             <td>{{ $data['student_year_info']['name'] }}</td>
                             <td>{{ $data['student_class_info']['name'] }}</td>
                             <td>
@@ -98,8 +98,9 @@
                             <td>{{ $data['student_info']['code'] }}</td>
                             <td>
                                 <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-info">Promotion</a>
-                                <a href="" class="btn btn-danger" >Delete</a>
+                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-primary">Promotion</a>
+                                {{-- <a href="" class="btn btn-danger" >Delete</a> --}}
+                                <a href="{{ route('student/details',$data->student_id) }}" class="btn btn-info" target="_blank" >Details</a>
                             </td>
                         </tr> student_id
                           @endforeach
@@ -130,7 +131,7 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $data['student_info']['name'] }}</td>
                             <td>{{ $data['student_info']['id_no'] }}</td>
-                            <td> </td>
+                            <td> {{ $data->roll }}</td>
                             <td>{{ $data['student_year_info']['name'] }}</td>
                             <td>{{ $data['student_class_info']['name'] }}</td>
                             <td>
@@ -138,8 +139,9 @@
                             <td>{{ $data['student_info']['code'] }}</td>
                             <td>
                                 <a href="{{ route('regi/edit',$data->student_id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-info">Promotion</a>
-                                <a href="" class="btn btn-danger" >Delete</a>
+                                <a href="{{ route('student/promotion',$data->student_id) }}" class="btn btn-primary">Promotion</a>
+                                {{-- <a href="" class="btn btn-danger" >Delete</a> --}}
+                                <a href="" class="btn btn-info" target="_blank" >Details</a>
                             </td>
                         </tr>
                           @endforeach
