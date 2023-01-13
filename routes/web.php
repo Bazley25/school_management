@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\student_setup\DesignationController;
 use App\Http\Controllers\Backend\student\StudentController;
 use App\Http\Controllers\Backend\student\StudentRollController;
 use App\Http\Controllers\Backend\student\StudentRegistrationFeeController;
+use App\Http\Controllers\Backend\student\MonthlyFeeController;
 
 // All Models
 use App\Models\StudentClass;
@@ -216,8 +217,13 @@ Route::prefix('students')->group(function(){
     Route::get('/regi/fee/view', [StudentRegistrationFeeController::class, 'StudentRegiFeeView'])->name('student/regi/fee/view');
     Route::get('/student/registration/fee/classwise/gets', [StudentRegistrationFeeController::class, 'StudentRegiFeeClassWise'])->name('student/registration/fee/classwise/gets');
     Route::get('/student/registration/fee/payslip', [StudentRegistrationFeeController::class, 'StudentRegiFeePayslip'])->name('student/registration/fee/payslip');
+
+    // Student monthly fee view Routes
     
+    Route::get('/monthly/fee/view', [MonthlyFeeController::class, 'MonthlyFeeView'])->name('monthly/fee/view');
     
+    Route::get('/student/monthly/fee/classwise/gets', [MonthlyFeeController::class, 'StudentMonthlyFeeClassWise'])->name('student/monthly/fee/classwise/gets');
+    Route::get('/student/montly/fee/payslip', [MonthlyFeeController::class, 'StudentMonthlyFeePayslip'])->name('student/montly/fee/payslip');
 
     
     
